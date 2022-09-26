@@ -64,6 +64,25 @@ const insertIndividuo = (pool, body, callback) => {
   });
 }
 
+const updateIndividuo = (pool,id,body,callback) => {
+  let query = `UPDATE individuo SET id=${id},nombre="${body.nombre}",apellido="${body.apellido}",dni=${body.dni},cliente_id=${body.clienteId} WHERE id = ${id}`
+  console.log(query)
+
+  pool.getConnection((error, connection) => {
+    if (error) throw error;
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+}
+
 const deleteIndividuoById = (pool, id, callback) => {
   let query = `Delete FROM individuo WHERE id = ${id}`;
 
@@ -88,5 +107,6 @@ module.exports = {
   getIndividuo,
   getIndividuoById,
   insertIndividuo,
+  updateIndividuo,
   deleteIndividuoById
 }
