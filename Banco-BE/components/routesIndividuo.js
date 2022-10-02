@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = express.Router()
-const { getIndividuo, getIndividuoById, insertIndividuo, updateIndividuo, deleteIndividuoById } = require('./operations')
+const { getIndividuo, getIndividuoById, insertIndividuo, updateIndividuo, deleteIndividuoById } = require('./operationsIndividuo')
 const { pool } = require('../config/connect')
 
 
@@ -11,7 +11,8 @@ routes.get('/individuo', (req, res) => {
 })
 
 routes.get('/individuo/:id', (req, res) => {
-    getIndividuoById(pool, req.params.id, result => {
+    let id = req.params.id
+    getIndividuoById(pool, id, result => {
         res.json(result)
     })
 })
@@ -27,7 +28,7 @@ routes.post('/individuo/insert', (req, res) => {
     })
 })
 
-routes.patch('/individuo/:id',(req, res) => {
+routes.patch('/individuo/update/:id',(req, res) => {
     let body = JSON.parse(JSON.stringify(req.body));
     updateIndividuo(pool,req.params.id,body,result => {
         res.json({

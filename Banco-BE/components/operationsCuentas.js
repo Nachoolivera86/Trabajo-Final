@@ -5,30 +5,9 @@ const httpStatus = require('http-status')
 
 /* ---- LLamada al back de los servicios----- */
 
-const getIndividuo = (pool, req, callback) => {
+const getCuentas = (pool, req, callback) => {
 
-  let query = "SELECT * FROM individuo";
-
-  pool.getConnection((error, connection) => {
-    if (error) throw error;
-
-    connection.query(query, (error, result) => {
-      if (error) throw error;
-
-      let response = result;
-      console.log(response)
-      callback(response)
-
-      connection.release();
-    });
-  });
-};
-
-
-
-
-const getIndividuoById = (pool, id, callback) => {
-  let query = `SELECT * FROM individuo WHERE id = ${id}`;
+  let query = "SELECT * FROM cuentas";
 
   pool.getConnection((error, connection) => {
     if (error) throw error;
@@ -45,8 +24,30 @@ const getIndividuoById = (pool, id, callback) => {
   });
 };
 
-const insertIndividuo = (pool, body, callback) => {
-  let query = `INSERT into individuo VALUES (${body.id},"${body.nombre}","${body.apellido}",${body.dni},${body.clienteId})`
+
+
+
+const getCuentaById = (pool, id, callback) => {
+
+  let query = `SELECT * FROM cuentas WHERE id = ${id}`;
+ 
+  pool.getConnection((error, connection) => {
+    if (error) throw error;
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
+
+const insertCuenta = (pool, body, callback) => {
+  let query = `INSERT into cuentas VALUES (${body.id},"${body.nrocta}","${body.cbu}",${body.saldo},${body.clienteId})`
   console.log(query)
 
   pool.getConnection((error, connection) => {
@@ -64,8 +65,8 @@ const insertIndividuo = (pool, body, callback) => {
   });
 }
 
-const updateIndividuo = (pool,id,body,callback) => {
-  let query = `UPDATE individuo SET id=${id},nombre="${body.nombre}",apellido="${body.apellido}",dni=${body.dni},cliente_id=${body.clienteId} WHERE id = ${id}`
+const updateCuenta = (pool,id,body,callback) => {
+  let query = `UPDATE cuentas SET nrocta="${body.nrocta}",cbu=${body.cbu},saldo=${body.saldo},cliente_id=${body.clienteId} WHERE id = ${id}`
   console.log(query)
 
   pool.getConnection((error, connection) => {
@@ -83,8 +84,8 @@ const updateIndividuo = (pool,id,body,callback) => {
   });
 }
 
-const deleteIndividuoById = (pool, id, callback) => {
-  let query = `Delete FROM individuo WHERE id = ${id}`;
+const deleteCuentaById = (pool, id, callback) => {
+  let query = `Delete FROM cuentas WHERE id = ${id}`;
 
   pool.getConnection((error, connection) => {
     if (error) throw error;
@@ -104,9 +105,9 @@ const deleteIndividuoById = (pool, id, callback) => {
 
 
 module.exports = {
-  getIndividuo,
-  getIndividuoById,
-  insertIndividuo,
-  updateIndividuo,
-  deleteIndividuoById
+  getCuentas,
+  getCuentaById,
+  insertCuenta,
+  updateCuenta,
+  deleteCuentaById
 }
