@@ -123,7 +123,11 @@ body {
 	min-width: 260px;
 	margin-top: 50px;
 	padding: 30px 25px;
+<<<<<<< HEAD
     border-radius: 5px;
+=======
+  border-radius: 5px;
+>>>>>>> 91c2cde8d53c162a885db2fc0e952975e13b8588
 	transform-origin: top;
 }
 
