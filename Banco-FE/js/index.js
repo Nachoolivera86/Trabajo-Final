@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const login = () => {
 	user = '',
 	password = ''
@@ -18,8 +18,7 @@ const llamada = async () => {
 llamada()
 
 
-=======
->>>>>>> 91c2cde8d53c162a885db2fc0e952975e13b8588
+
 const switchers = [...document.querySelectorAll('.switcher')]
 
 switchers.forEach(item => {
@@ -27,10 +26,5 @@ switchers.forEach(item => {
 		switchers.forEach(item => item.parentElement.classList.remove('is-active'))
 		this.parentElement.classList.add('is-active')
 	})
-<<<<<<< HEAD
-})
 
-
-=======
 })
->>>>>>> 91c2cde8d53c162a885db2fc0e952975e13b8588

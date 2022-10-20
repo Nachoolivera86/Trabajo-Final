@@ -17,27 +17,27 @@ const consultaSaldo = async () => {
 let consulta = document.getElementById("consultar");
 consulta.addEventListener("click",consultaSaldo);
 
-let extraccion = document.getElementById("consultar");
-extraccion.addEventListener("click",saldoOnOff);
+let extraccion = document.getElementById("extraccion");
+extraccion.addEventListener("click",verExtraccion);
 
 
 //consultaSaldo();
 function mostrarSaldo(paramResponse) {
     console.log(paramResponse)
     console.log(paramResponse[0].Saldo)
-    
+
     let html = "";
          html += `${paramResponse[0].Saldo}
         
            `;
-    
-    document.querySelector("#mostrarSaldo").innerHTML = html;
+
+    document.querySelector("#consultaSaldo").innerHTML = html;
 }
 
 
-function saldoOnOff(){
-    document.querySelector("#ocultarsaldo").classList.add('ocultarDisplay');
-    document.querySelector('#mostrarsaldo').classList.add('mostrarDisplay');
+function verExtraccion(){
+    document.querySelector("#consultaSaldo").classList.add('ocultarDisplay');
+    document.querySelector('#extraccion').classList.add('mostrarDisplay');
 
 }
 
