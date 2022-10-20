@@ -17,8 +17,8 @@ const consultaSaldo = async () => {
 let consulta = document.getElementById("consultar");
 consulta.addEventListener("click",consultaSaldo);
 
-let extraccion = document.getElementById("extraccion");
-extraccion.addEventListener("click",verExtraccion);
+let extraccion = document.getElementById("consultar");
+extraccion.addEventListener("click",saldoOnOff);
 
 
 //consultaSaldo();
@@ -31,12 +31,14 @@ function mostrarSaldo(paramResponse) {
         
            `;
     
-    document.querySelector("#consultaSaldo").innerHTML = html;
+    document.querySelector("#mostrarSaldo").innerHTML = html;
 }
 
 
-function verExtraccion(){
-    document.querySelector("#consultaSaldo").classList.add('ocultarDisplay');
-    document.querySelector('#extraccion').classList.add('mostrarDisplay');
+function saldoOnOff(){
+    document.querySelector("#ocultarsaldo").classList.add('ocultarDisplay');
+    document.querySelector('#mostrarsaldo').classList.add('mostrarDisplay');
 
 }
+
+
