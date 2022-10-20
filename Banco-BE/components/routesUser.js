@@ -22,7 +22,7 @@ routes.post('/usuario/insert', (req, res) => {
     insertUser(pool, body, result => {
         res.status(201)
         res.json({
-            message: 'new user created'
+            message: `new user ${body.user} created`
         });
     })
 })

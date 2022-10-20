@@ -1,5 +1,6 @@
 const my = require("mysql2");
-const httpStatus = require('http-status')
+const httpStatus = require('http-status');
+const { body } = require("express-validator");
 
 
 
@@ -29,16 +30,22 @@ const getIndividuo = (pool, req, callback) => {
 
 const getIndividuoById = (pool, id, callback) => {
 
-  let query = `SELECT * FROM individuo WHERE id = ${id}`;
- 
+  let query = `SELECT id,nombre,apellido,dni,cliente_id FROM individuo WHERE id = ${id}`;
+
   pool.getConnection((error, connection) => {
     if (error) throw error;
 
     connection.query(query, (error, result) => {
-      if (error) throw error;
-
-      let response = result;
-      console.log(response)
+      if (error){
+        throw error;
+      }else{
+        var response = result;
+        if(result.length > 0){
+           console.log(result);
+        }else{
+           console.log('Registro no encontrado');
+        }
+     }
       callback(response)
 
       connection.release();
@@ -82,6 +89,23 @@ const updateIndividuo = (pool,id,body,callback) => {
       connection.release();
     });
   });
+}
+
+const conexion = (query,error,result,callback) => {
+  pool.getConnection((error, connection) => {
+    if (error) throw error;
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+
 }
 
 const deleteIndividuoById = (pool, id, callback) => {

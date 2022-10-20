@@ -45,6 +45,5 @@ routes.delete('/cuenta/:id', (req, res) => {
     })
 })
 
-
 module.exports = routes;
 

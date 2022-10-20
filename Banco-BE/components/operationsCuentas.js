@@ -5,12 +5,11 @@ const httpStatus = require('http-status')
 
 /* ---- LLamada al back de los servicios----- */
 
-const getCuentas = (pool, req, callback) => {
+const getCuentas = async (pool, req, callback) => {
 
-  let query = "SELECT * FROM cuentas";
-
-  pool.getConnection((error, connection) => {
+  await pool.getConnection((error, connection) => {
     if (error) throw error;
+    let query = "SELECT * FROM cuentas";
 
     connection.query(query, (error, result) => {
       if (error) throw error;
