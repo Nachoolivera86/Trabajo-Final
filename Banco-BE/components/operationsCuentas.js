@@ -3,6 +3,7 @@ const httpStatus = require('http-status')
 
 
 
+
 /* ---- LLamada al back de los servicios----- */
 
 const getCuentas = async (pool, req, callback) => {
@@ -65,7 +66,9 @@ const insertCuenta = (pool, body, callback) => {
 }
 
 const updateCuenta = (pool,id,body,callback) => {
-  let query = `UPDATE cuentas SET nrocta="${body.nrocta}",cbu=${body.cbu},saldo=${body.saldo},cliente_id=${body.clienteId} WHERE id = ${id}`
+  console.log("llegue al BE")
+  console.log(body);
+  let query = `UPDATE cuentas SET saldo=${body.deposito} WHERE id = ${id}`
   console.log(query)
 
   pool.getConnection((error, connection) => {

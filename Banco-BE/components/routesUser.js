@@ -5,6 +5,7 @@ const { pool } = require('../config/connect')
 
 
 routes.get('/usuario', (req, res) => {
+    console.log("llegue");
     getUser(pool, req, result => {
         res.json(result)
     })
@@ -17,7 +18,6 @@ routes.get('/usuario/:id', (req, res) => {
 })
 
 routes.post('/usuario/insert', (req, res) => {
-
     let body = JSON.parse(JSON.stringify(req.body));
     insertUser(pool, body, result => {
         res.status(201)
