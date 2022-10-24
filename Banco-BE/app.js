@@ -1,6 +1,8 @@
+
 const express = require('express');
 const app = express();
 const api = require('./config/api')
+
 require('dotenv').config();
 
 app.use( (req, res, next) => {
