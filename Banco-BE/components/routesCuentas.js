@@ -1,11 +1,29 @@
 const express = require('express');
 const routes = express.Router()
-const { getCuentas, getCuentaById, insertCuenta, updateCuenta, deleteCuentaById } = require('./operationsCuentas')
+const { getCuentas, getMaxNumCta, getMaxCbu, getMaxIdCli, getCuentaById, insertCuenta, updateCuenta, deleteCuentaById } = require('./operationsCuentas')
 const { pool } = require('../config/connect')
 
 
 routes.get('/cuentas', (req, res) => {
     getCuentas(pool, req, result => {
+        res.json(result)
+    })
+})
+
+routes.get('/maxCli', (req, res) => {
+    getMaxNumCta(pool, req, result => {
+        res.json(result)
+    })
+})
+
+routes.get('/maxCbu', (req, res) => {
+    getMaxCbu(pool, req, result => {
+        res.json(result)
+    })
+})
+
+routes.get('/maxIdCu', (req, res) => {
+    getMaxIdCli(pool, req, result => {
         res.json(result)
     })
 })

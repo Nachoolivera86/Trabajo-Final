@@ -24,8 +24,59 @@ const getCuentas = async (pool, req, callback) => {
   });
 };
 
+const getMaxNumCta = async (pool, req, callback) => {
 
+  await pool.getConnection((error, connection) => {
+    if (error) throw error;
+    let query = "SELECT MAX(nrocta) as maximoNumeroCuenta FROM cuentas";
 
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
+
+const getMaxCbu = async (pool, req, callback) => {
+
+  await pool.getConnection((error, connection) => {
+    if (error) throw error;
+    let query = "SELECT MAX(cbu) as maximoNumeroCbu FROM cuentas";
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
+
+const getMaxIdCli = async (pool, req, callback) => {
+
+  await pool.getConnection((error, connection) => {
+    if (error) throw error;
+    let query = "SELECT MAX(Cliente_Id) as maximoNumeroCliente FROM cuentas";
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
 
 const getCuentaById = (pool, id, callback) => {
 
@@ -108,6 +159,9 @@ const deleteCuentaById = (pool, id, callback) => {
 
 module.exports = {
   getCuentas,
+  getMaxNumCta,
+  getMaxCbu,
+  getMaxIdCli,
   getCuentaById,
   insertCuenta,
   updateCuenta,
