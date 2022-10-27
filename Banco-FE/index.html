@@ -9,16 +9,24 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="title">
+    <p class="bank">Banco ISFDyT</p>
+    <h3>tu banco de confianza</h3>
+  </div>
   <div class="form-wrapper is-active">
-    <label for="login-user">Usuario</label>
-    <input id="login-user" type="text" required>
+    <div class="box-log">
+      <div>
+        <label for="login-user">Usuario</label>
+        <input id="login-user" type="text" required>
+      </div>
+      <div>
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" required>
+      </div>
+      <button type="submit" class="btn-login" id="btnLogin">Login</button>
+      <script src="js/index.js"></script>
+    </div>
   </div>
-  <div>
-    <label for="login-password">Password</label>
-    <input id="login-password" type="password" required>
-  </div>
-  <button type="submit" class="btn-login" id="btnLogin">Login</button>
-  <script src="js/index.js"></script><
 </body>
 </html>
 

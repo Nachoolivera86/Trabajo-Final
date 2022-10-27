@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = express.Router()
-const { getUser, getUserById, insertUser, updateUser, deleteUserById } = require('./operationsCliente')
+const { getClient, getClientById, insertClient, updateClient, deleteClientById } = require('./operationsCliente')
 const { pool } = require('../config/connect')
 
 
@@ -22,7 +22,7 @@ routes.post('/cliente/insert', (req, res) => {
     insertClient(pool, body, result => {
         res.status(201)
         res.json({
-            message: `new client ${body.id} created`
+            message: `new client ${body.Id} created`
         });
     })
 })

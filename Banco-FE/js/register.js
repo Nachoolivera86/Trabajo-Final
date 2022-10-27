@@ -42,6 +42,15 @@ const datosUsuario = async () => {
 	}
 }
 
+const datosCli = async () => {
+    try {
+        let cliente = await fetch('http://localhost:8080/api/v1/cliente').then(res => res.json())
+        datosClientes = cliente;
+        console.log(datosClientes)
+    }catch (error) {
+        console.log(error)
+    }
+}
 
 const datosCuenta = async () => {
     try {
@@ -112,6 +121,19 @@ const registrarUsuario = async () => {
     }
 }
 
+const registrarCli = async () => {
+    let ultimoIdCli = (datosClientes.length) + 1;
+    console.log(ultimoIdCli);
+    let data1 = {
+        "Id" : ultimoIdCli,
+        "Telefono" : Telefono,
+        "Mail" : Mail,
+        "Direccion" : Direccion,
+        "UsuarioId" : ultimoIdUsuario
+    } 
+    console.log(data1);
+}
+
 const registrarCuenta = async () => {
     let nuevoIdCuenta = (datosCuentas.length) + 1;
     let nuevoNroCta = (datosCuentas1[0].maximoNumeroCuenta) + 1;
@@ -144,6 +166,7 @@ const registrarCuenta = async () => {
     }
 }
 
+datosCli();
 
 datosUsuario();
 datosCuenta();
