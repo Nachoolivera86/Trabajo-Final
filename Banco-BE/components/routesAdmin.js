@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = express.Router()
-const { getUser, getUserById, insertUser, updateUser, deleteUserById } = require('./operationsAdmin')
+const { getAdmin, getAdminById, insertAdmin, updateAdmin, deleteAdminById } = require('./operationsAdmin')
 const { pool } = require('../config/connect')
 
 

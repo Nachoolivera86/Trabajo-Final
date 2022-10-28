@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = express.Router()
-const { getUser, getUserById, insertUser, updateUser, deleteUserById } = require('./operationsPyme')
+const { getPyme, getPymeById, insertPyme, updatePyme, deletePymeById } = require('./operationsPyme')
 const { pool } = require('../config/connect')
 
 
