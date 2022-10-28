@@ -15,18 +15,23 @@ function registrar(){
     console.log(user);
     console.log(password);
     console.log(checkPass);
+    try {
+        if (!user || !password || !checkPass){
+            console.log("Uno de los campos esta vacio")
+            return
+        } 
+    
+        if(password === checkPass){
+            registrarUsuario();
+            registrarCuenta();
+        }else{
+            console.log("datos invalidos");
+        }
 
-    if (!user || !password || !checkPass){
-        console.log("Uno de los campos esta vacio")
-        return
-    } 
-
-    if(password === checkPass){
-        registrarUsuario();
-        registrarCuenta();
-    }else{
-        console.log("datos invalidos");
+    }catch (error){
+        console.log(error)
     }
+    
 }
 
 let btnRegistrar = document.getElementById("btnContinue");
@@ -131,7 +136,24 @@ const registrarCli = async () => {
         "Direccion" : Direccion,
         "UsuarioId" : ultimoIdUsuario
     } 
-    console.log(data1);
+    try {
+        let response = await fetch('http://localhost:8080/api/v1/cliente/insert', 
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data1)
+        });
+        if (await response.json()) {
+            console.log("Salio todo bien");
+         }
+         else {
+             console.log("todo mal")
+         }
+    } catch (error) {
+        console.log("salio por el catch");
+    }
 }
 
 const registrarCuenta = async () => {

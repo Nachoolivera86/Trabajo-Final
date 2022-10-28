@@ -47,14 +47,17 @@ body {
 	
 }
 .box-log {
-	background-image: url(https://images.pexels.com/videos/5485144/pexels-photo-5485144.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+	background-image: url(https://img.freepik.com/vector-gratis/fondo-oscuro-fibra-carbono-lineas-metal_1017-23624.jpg?w=2000);
 	margin: auto;
-	margin-bottom: 150px;
-	position: relative;
+	padding-top: 70px;
+	position: absolute;
+	right: 40%;
+	bottom: 25%;
 	border-radius: 10px;
-	height: 200px;
-	width: 15%;
-	color: red;
+	height: 30%;
+	width: 20%;
+	color: rgb(170, 33, 33);
+	font-size: 25px;
 }
 
 .form-wrapper.is-active {
@@ -300,7 +303,10 @@ body {
 	color: #fbfdff;
 	background: #779b3e;
 	transform: translateX(-30%);
-	
+	height: 30px;
+	width: 80px;
+	border-radius: 5px;
+	margin: 20px;
 }
 
 .btn-signup {
