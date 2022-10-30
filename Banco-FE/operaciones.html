@@ -3,24 +3,49 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Banco ISFDyT</title>
+      <title>Banco Brubank</title>
       <link rel="stylesheet" href="css/operaciones.css" />
    </head>
    <body>
-    <p class="titulo">Menú Operaciones</p>
-    <h3 class="saludo">¡Bienvenido! Usuario <span id="nombreUsuario"></span></h3>
-    <p class="opciones">¿Que operación desea realizar?</p>
-    <div class="menu">
-      <ul>
-         <li><a id="depositar">Depositar</a></li>
-         <li><a id="extraccion">Extraccion</a></li>
-         <li><a id="consultar">Consulta Saldo</a></li>
-         <li><a id="pagoSueldos">Pago Sueldos</a></li>
-      </ul>
-   </div>
-    <div><p id="consultaSaldo"></p></div>
-    <div><p id="verExtraccion"></p></div>
+       <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+   <div class="container d-flex align-items-center justify-content-between">
+     
+   <h4 class="saludo">Bienvenido <span class="user" id="nombreUsuario"></span></h4>
+   <p class="opciones">¿Que operación desea realizar?</p>  
+   <h1 class="titulo">Menu Operaciones</h1>
+     <nav id="navbar" class="navbar">
+      <ul class="menu">
+         <li><a class="nav-link" id="depositar">Depositar</a></li>
+         <li><a class="nav-link" id="extraccion">Extraer</a></li>
+         <li><a class="nav-link" id="consultar">Consultar Saldo</a></li>
+         <li><a class="nav-link" id="pagoSueldos">Pago Sueldos</a></li>
+     </ul>
 
+     </nav><!-- .navbar -->
+
+   </div>
+  </header><!-- End Header -->
+
+    
+
+  <!-- ======= Featured Services Section ======= -->
+  <section id="featured-services" class="featured-services">
+   <div class="container">  
+
+     <div class="row">
+       <div class="col-lg-4 col-md-6">
+         <div class="icon-box-cards">
+
+            
+            <div><p class="importe" id="consultaSaldo"></p></div>
+            <div><p id="verExtraccion"></p></div>
+           <div class="icon-cards"><i class="bi bi-emoji-heart-eyes"></i></div>
+         </div>
+       </div>
+     </div>
+   </div>
+</section><!-- End Featured Services Section -->
 
    </body>
    <script src="./js/operaciones.js"></script>

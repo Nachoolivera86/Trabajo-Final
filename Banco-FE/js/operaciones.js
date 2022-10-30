@@ -17,8 +17,6 @@ const consultaSaldo = async () => {
 }
 
 
-
-
 let consulta = document.getElementById("consultar");
 consulta.addEventListener("click",consultaSaldo);
 
@@ -32,7 +30,7 @@ function  mostrarSaldo(paramResponse) {
     console.log(paramResponse[0].Saldo)
 
     let html = "";
-         html += `${paramResponse[0].Saldo}
+         html += `El saldo de su cuenta es: ${paramResponse[0].Saldo}  pesos
         
            `;
 
@@ -78,7 +76,7 @@ const depositarImporte = async () =>{
              console.log("todo mal")
          }
     } catch (error) {
-        console.log("salio or el catch");
+        console.log("salio por el catch");
     }
 
  
@@ -205,7 +203,6 @@ let pagarSueldo = async () => {
     }
     
 }
-
 
 
 let pagoSueldos = document.getElementById("pagoSueldos");
