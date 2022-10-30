@@ -1,6 +1,8 @@
+
 const express = require('express');
 const app = express();
 const api = require('./config/api')
+
 require('dotenv').config();
 
 app.use( (req, res, next) => {
@@ -20,6 +22,8 @@ app.use(
   );
 
 app.use(express.json())
+
+
 
 app.use('/api/v1', api.v1)
 

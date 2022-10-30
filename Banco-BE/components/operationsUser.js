@@ -1,3 +1,4 @@
+
 const my = require("mysql2");
 const httpStatus = require('http-status')
 
@@ -46,7 +47,7 @@ const getUserById = (pool, id, callback) => {
 };
 
 const insertUser = (pool, body, callback) => {
-  let query = `INSERT into usuario VALUES (${body.id},"${body.user}","${body.password}")`
+  let query = `INSERT into usuario VALUES (${body.Id},"${body.User}","${body.Password}")`
   console.log(query)
 
   pool.getConnection((error, connection) => {

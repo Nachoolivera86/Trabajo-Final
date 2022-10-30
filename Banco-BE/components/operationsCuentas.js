@@ -3,14 +3,14 @@ const httpStatus = require('http-status')
 
 
 
+
 /* ---- LLamada al back de los servicios----- */
 
-const getCuentas = (pool, req, callback) => {
+const getCuentas = async (pool, req, callback) => {
 
-  let query = "SELECT * FROM cuentas";
-
-  pool.getConnection((error, connection) => {
+  await pool.getConnection((error, connection) => {
     if (error) throw error;
+    let query = "SELECT * FROM cuentas";
 
     connection.query(query, (error, result) => {
       if (error) throw error;
@@ -24,8 +24,59 @@ const getCuentas = (pool, req, callback) => {
   });
 };
 
+const getMaxNumCta = async (pool, req, callback) => {
 
+  await pool.getConnection((error, connection) => {
+    if (error) throw error;
+    let query = "SELECT MAX(nrocta) as maximoNumeroCuenta FROM cuentas";
 
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
+
+const getMaxCbu = async (pool, req, callback) => {
+
+  await pool.getConnection((error, connection) => {
+    if (error) throw error;
+    let query = "SELECT MAX(cbu) as maximoNumeroCbu FROM cuentas";
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
+
+const getMaxIdCli = async (pool, req, callback) => {
+
+  await pool.getConnection((error, connection) => {
+    if (error) throw error;
+    let query = "SELECT MAX(clienteid) as maximoNumeroCliente FROM cuentas";
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
 
 const getCuentaById = (pool, id, callback) => {
 
@@ -47,7 +98,7 @@ const getCuentaById = (pool, id, callback) => {
 };
 
 const insertCuenta = (pool, body, callback) => {
-  let query = `INSERT into cuentas VALUES (${body.id},"${body.nrocta}","${body.cbu}",${body.saldo},${body.clienteId})`
+  let query = `INSERT into cuentas VALUES (${body.id},"${body.nrocta}","${body.cbu}",${body.saldo},${body.clienteid})`
   console.log(query)
 
   pool.getConnection((error, connection) => {
@@ -66,7 +117,9 @@ const insertCuenta = (pool, body, callback) => {
 }
 
 const updateCuenta = (pool,id,body,callback) => {
-  let query = `UPDATE cuentas SET nrocta="${body.nrocta}",cbu=${body.cbu},saldo=${body.saldo},cliente_id=${body.clienteId} WHERE id = ${id}`
+  console.log("llegue al BE")
+  console.log(body);
+  let query = `UPDATE cuentas SET saldo=${body.deposito} WHERE id = ${id}`
   console.log(query)
 
   pool.getConnection((error, connection) => {
@@ -106,6 +159,9 @@ const deleteCuentaById = (pool, id, callback) => {
 
 module.exports = {
   getCuentas,
+  getMaxNumCta,
+  getMaxCbu,
+  getMaxIdCli,
   getCuentaById,
   insertCuenta,
   updateCuenta,

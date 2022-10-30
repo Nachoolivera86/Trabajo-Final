@@ -1,0 +1,273 @@
+
+body {
+    font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    background-image: url(https://www.avvillas.com.co/avvillas/novedad-Tarjeta-Debito-Mastercard/img/header.jpg);
+}
+
+.titulo {
+    text-align: center;
+    color: white;
+}
+
+.saludo {
+    margin-top: 100px;  
+    color: white;
+}
+
+.user {
+    font-weight: bolder;
+    
+}
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+  /*--------------------------------------------------------------
+  # Navigation Menu
+  --------------------------------------------------------------*/
+  /**
+  * Desktop Navigation 
+  */
+  .navbar {
+    padding: 0px ;
+    width: 1250px;
+    left: 260px;
+  
+    
+  }
+  .navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+  .navbar li {
+    position: relative;
+  }
+  .navbar a, .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #6a7489;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+  .navbar a i, .navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+  }
+  .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+    color: black;
+  }
+  .navbar .getstarted, .navbar .getstarted:focus {
+    padding: 10px 25px;
+    margin-left: 30px;
+    border-radius: 4px;
+    line-height: 1;
+    color: #5f687b;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #cdd1d9;
+  }
+  .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
+    background: #FDB750;
+    color: #fff;
+    border-color: #FDB750;
+  }
+  .navbar .dropdown ul {
+    display: block;
+    position: absolute;
+    left: 14px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: 0.3s;
+    border-radius: 4px;
+  }
+  .navbar .dropdown ul li {
+    min-width: 200px;
+  }
+  .navbar .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    font-weight: 600;
+  }
+  .navbar .dropdown ul a i {
+    font-size: 12px;
+  }
+  .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
+    color: #FDB750;
+  }
+  .navbar .dropdown:hover > ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+  .navbar .dropdown .dropdown ul {
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
+  }
+  .navbar .dropdown .dropdown:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
+  }
+
+
+.opciones {
+    margin-top: 20px;  
+    color: white;
+}
+
+.menu {
+    margin-top: 20px;  
+    color: white;
+    font-size: larger;
+    color: inherit;
+    text-decoration: none;
+    list-style: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu li a:hover {
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+    padding: 60px 0;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .section-bg {
+    background-color: #f9f9fa;
+  }
+  
+  .section-title {
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+  }
+  .section-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    color: #5f687b;
+    position: relative;
+    z-index: 2;
+  }
+  .section-title span {
+    position: absolute;
+    top: 30px;
+    color: #f0f1f3;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    font-weight: 700;
+    font-size: 52px;
+    text-transform: uppercase;
+    line-height: 0;
+  }
+  .section-title p {
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 575px) {
+    .section-title h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+    .section-title span {
+      font-size: 38px;
+    }
+  }
+  
+  /*--------------------------------------------------------------
+  # Featured Services Section
+  --------------------------------------------------------------*/
+  .featured-services {
+    padding: 0;
+  }
+  .featured-services .icon-box-cards {
+    padding: 20px;
+    color: #010100;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid white;
+    transition: 0.3s;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .featured-services .icon-cards {
+    margin: 0 0 15px 0;
+  }
+  .featured-services .icon-cards i {
+    color: #010100;
+    font-size: 36px;
+  }
+  .featured-services .title-cards {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  .featured-services .title-cards a {
+    color: #010100;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  .featured-services .icon-box-cards:hover {
+    border-color: #eaecef;
+  }
+  .featured-services .icon-box-cards:hover .title-cards a {
+    color:    #FC2E20;
+  }
+  .featured-services .description {
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+.importe {
+    font-size: larger;
+    color: black;
+    margin-left: 50px;
+}
+
+.extraccion{
+    display: none;
+}
+
+
+.ocultarDisplay{
+    display: none;
+}
+

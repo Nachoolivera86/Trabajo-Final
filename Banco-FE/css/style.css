@@ -7,9 +7,19 @@
 body {
 	margin: 0;
 	font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
-	background: #3b4465;
+	background-image: url(https://www.avvillas.com.co/avvillas/novedad-Tarjeta-Debito-Mastercard/img/header.jpg);
 }
+.title {
+	text-align: center;
+	margin-top: 150px;
+	font-style: italic;
 
+}
+.bank {
+	font-weight: bold;
+	font-size: 80px;
+	
+}
 .forms-section {
 	display: flex;
 	flex-direction: column;
@@ -31,10 +41,28 @@ body {
 
 .form-wrapper {
 	animation: hideLayer .3s ease-out forwards;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 10%;
+	
+}
+.box-log {
+	background-image: url(https://img.freepik.com/vector-gratis/fondo-oscuro-fibra-carbono-lineas-metal_1017-23624.jpg?w=2000);
+	margin: auto;
+	padding-top: 70px;
+	position: absolute;
+	right: 40%;
+	bottom: 25%;
+	border-radius: 10px;
+	height: 30%;
+	width: 20%;
+	color: rgb(170, 33, 33);
+	font-size: 25px;
 }
 
 .form-wrapper.is-active {
 	animation: showLayer .3s ease-in forwards;
+
 }
 
 @keyframes showLayer {
@@ -123,7 +151,7 @@ body {
 	min-width: 260px;
 	margin-top: 50px;
 	padding: 30px 25px;
-  border-radius: 5px;
+    border-radius: 5px;
 	transform-origin: top;
 }
 
@@ -270,11 +298,18 @@ body {
 	transform: translateX(0);
 	transition: all .4s ease-in;
 }
-
+.login {
+	text-decoration: none;
+}
 .btn-login {
 	color: #fbfdff;
-	background: #a7e245;
+	background: #779b3e;
 	transform: translateX(-30%);
+	height: 30px;
+	width: 80px;
+	border-radius: 5px;
+	margin: 20px;
+	left: 20px;
 }
 
 .btn-signup {
@@ -282,4 +317,22 @@ body {
 	background: #fbfdff;
 	box-shadow: inset 0 0 0 2px #a7e245;
 	transform: translateX(30%);
+}
+
+.register {
+	text-decoration: none;
+	font-size: medium;
+	color: rgb(170, 33, 33);
+}
+.btn-ChangePass {
+	color: #fbfdff;
+	background: #779b3e;
+	transform: translateX(-30%);
+	position: absolute;
+	height: 30px;
+	width: 250px;
+	border-radius: 5px;
+	margin: 10px;
+	right: 0px;
+
 }
