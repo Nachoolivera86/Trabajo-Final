@@ -10,10 +10,10 @@ function login(){
 	
 	for(let i = 0; i<= response.length;i++){
 		try{
-		if(user === response[i].User && password === response[i].Password){
+		if(user === response[i].user && password === response[i].password){
 			validacion = true;
-			id = response[i].Id;
-			usuario = response[i].User;
+			id = response[i].id;
+			usuario = response[i].user;
 		}
 	}catch(error){
 			console.log(error);

@@ -65,7 +65,7 @@ body {
     margin-left: 5px;
   }
   .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-    color: #FDB750;
+    color: black;
   }
   .navbar .getstarted, .navbar .getstarted:focus {
     padding: 10px 25px;
@@ -262,7 +262,7 @@ section {
     margin-left: 50px;
 }
 
-extraccion{
+.extraccion{
     display: none;
 }
 

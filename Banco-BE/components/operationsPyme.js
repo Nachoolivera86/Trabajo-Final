@@ -46,7 +46,7 @@ const getPymeById = (pool, id, callback) => {
 };
 
 const insertPyme = (pool, body, callback) => {
-  let query = `INSERT into pyme VALUES (${body.id},"${body.razonSocial}","${body.cliente_id}")`
+  let query = `INSERT into pyme VALUES (${body.id},"${body.razonsocial}","${body.clienteid}")`
   console.log(query)
 
   pool.getConnection((error, connection) => {
@@ -65,7 +65,7 @@ const insertPyme = (pool, body, callback) => {
 }
 
 const updatePyme = (pool,id,body,callback) => {
-  let query = `UPDATE pyme SET razonSocial="${body.razonSocial}", cliente_id="${body.cliente_id}" WHERE id = ${id}`
+  let query = `UPDATE pyme SET razonsocial="${body.razonsocial}", cliente_id="${body.clienteid}" WHERE id = ${id}`
   console.log(query)
 
   pool.getConnection((error, connection) => {

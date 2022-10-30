@@ -30,7 +30,7 @@ const getIndividuo = (pool, req, callback) => {
 
 const getIndividuoById = (pool, id, callback) => {
 
-  let query = `SELECT id,nombre,apellido,dni,cliente_id FROM individuo WHERE id = ${id}`;
+  let query = `SELECT id,nombre,apellido,dni,clienteid FROM individuo WHERE id = ${id}`;
 
   pool.getConnection((error, connection) => {
     if (error) throw error;
@@ -54,7 +54,7 @@ const getIndividuoById = (pool, id, callback) => {
 };
 
 const insertIndividuo = (pool, body, callback) => {
-  let query = `INSERT into individuo VALUES (${body.id},"${body.nombre}","${body.apellido}",${body.dni},${body.clienteId})`
+  let query = `INSERT into individuo VALUES (${body.id},"${body.nombre}","${body.apellido}",${body.dni},${body.clienteid})`
   console.log(query)
 
   pool.getConnection((error, connection) => {
@@ -73,7 +73,7 @@ const insertIndividuo = (pool, body, callback) => {
 }
 
 const updateIndividuo = (pool,id,body,callback) => {
-  let query = `UPDATE individuo SET nombre="${body.nombre}",apellido="${body.apellido}",dni=${body.dni},cliente_id=${body.clienteId} WHERE id = ${id}`
+  let query = `UPDATE individuo SET nombre="${body.nombre}",apellido="${body.apellido}",dni=${body.dni},clienteid=${body.clienteId} WHERE id = ${id}`
   console.log(query)
 
   pool.getConnection((error, connection) => {

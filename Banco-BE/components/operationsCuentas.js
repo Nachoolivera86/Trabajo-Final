@@ -64,7 +64,7 @@ const getMaxIdCli = async (pool, req, callback) => {
 
   await pool.getConnection((error, connection) => {
     if (error) throw error;
-    let query = "SELECT MAX(Cliente_Id) as maximoNumeroCliente FROM cuentas";
+    let query = "SELECT MAX(clienteid) as maximoNumeroCliente FROM cuentas";
 
     connection.query(query, (error, result) => {
       if (error) throw error;
@@ -98,7 +98,7 @@ const getCuentaById = (pool, id, callback) => {
 };
 
 const insertCuenta = (pool, body, callback) => {
-  let query = `INSERT into cuentas VALUES (${body.id},"${body.nrocta}","${body.cbu}",${body.saldo},${body.clienteId})`
+  let query = `INSERT into cuentas VALUES (${body.id},"${body.nrocta}","${body.cbu}",${body.saldo},${body.clienteid})`
   console.log(query)
 
   pool.getConnection((error, connection) => {

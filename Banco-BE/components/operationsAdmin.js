@@ -46,7 +46,7 @@ const getAdminById = (pool, id, callback) => {
 };
 
 const insertAdmin = (pool, body, callback) => {
-  let query = `INSERT into administrador VALUES (${body.id},"${body.nombre}","${body.apellido}", "${body.dni}", "${body.usuario_id}")`
+  let query = `INSERT into administrador VALUES (${body.id},"${body.nombre}","${body.apellido}", "${body.dni}", "${body.usuarioid}")`
   console.log(query)
 
   pool.getConnection((error, connection) => {

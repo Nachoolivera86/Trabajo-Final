@@ -46,7 +46,7 @@ const getClientById = (pool, id, callback) => {
 };
 
 const insertClient = (pool, body, callback) => {
-  let query = `INSERT into cliente VALUES (${body.Id},"${body.Telefono}","${body.Mail}", "${body.Direccion}", "${body.Usuario_Id}")`
+  let query = `INSERT into cliente VALUES (${body.id},"${body.telefono}","${body.mail}", "${body.direccion}", "${body.usuarioid}")`
   console.log(query)
 
   pool.getConnection((error, connection) => {
@@ -65,7 +65,7 @@ const insertClient = (pool, body, callback) => {
 }
 
 const updateClient = (pool,id,body,callback) => {
-  let query = `UPDATE cliente SET telefono="${body.Telefono}",mail="${body.Mail}", direccion="${body.Direccion}", usuario_id="${body.Usuario_Id}" WHERE id = ${id}`
+  let query = `UPDATE cliente SET telefono="${body.telefono}",mail="${body.mail}", direccion="${body.direccion}", usuarioid="${body.usuarioid}" WHERE id = ${id}`
   console.log(query)
 
   pool.getConnection((error, connection) => {

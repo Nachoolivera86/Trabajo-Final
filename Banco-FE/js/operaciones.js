@@ -27,10 +27,10 @@ consulta.addEventListener("click",consultaSaldo);
 
 function  mostrarSaldo(paramResponse) {
     console.log(paramResponse)
-    console.log(paramResponse[0].Saldo)
+    console.log(paramResponse[0].saldo)
 
     let html = "";
-         html += `El saldo de su cuenta es: ${paramResponse[0].Saldo}  pesos
+         html += `El saldo de su cuenta es: ${paramResponse[0].saldo}  pesos
         
            `;
 
@@ -48,7 +48,7 @@ const depositarImporte = async () =>{
    let paramResponse = 0
     try{
 		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
-		paramResponse = Number(response[0].Saldo); 
+		paramResponse = Number(response[0].saldo); 
         console.log(paramResponse)
 	}catch (error){
 		console.log(error)
@@ -58,7 +58,7 @@ const depositarImporte = async () =>{
     deposito = deposito + paramResponse;
     console.log(deposito);
     let data = {
-        "Id" : id,
+        "id" : id,
         "deposito": deposito
     }
     try {
@@ -90,7 +90,7 @@ let extraerSaldo = async () => {
     let paramResponse = 0
     try{
 		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
-		paramResponse = Number(response[0].Saldo); 
+		paramResponse = Number(response[0].saldo); 
         console.log(paramResponse)
 	}catch (error){
 		console.log(error)
@@ -102,7 +102,7 @@ let extraerSaldo = async () => {
         alert("Extraccion correcta");
         let deposito = paramResponse - extraccion;
         let data = {
-            "Id" : id,
+            "id" : id,
             "deposito": deposito
         }
         try {
@@ -139,7 +139,7 @@ let pagarSueldo = async () => {
     let paramResponse2 = 0
     try{
 		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
-		paramResponse = Number(response[0].Saldo); 
+		paramResponse = Number(response[0].saldo); 
         console.log(paramResponse)
 	}catch (error){
 		console.log(error)
@@ -152,14 +152,14 @@ let pagarSueldo = async () => {
         alert("Pago correcto");
         try{
             let response2 = await fetch('http://localhost:8080/api/v1/cuenta/'+idEmpleado).then(res => res.json())
-            paramResponse2 = Number(response2[0].Saldo); 
+            paramResponse2 = Number(response2[0].saldo); 
         }catch (error){
             console.log(error)
         }
         paramResponse2 = paramResponse2 + pagoEmpleado;
         let deposito = paramResponse - pagoEmpleado;
         let data = {
-            "Id" : id,
+            "id" : id,
             "deposito": deposito,
         }
         try {
@@ -180,7 +180,7 @@ let pagarSueldo = async () => {
             console.log("salio or el catch");
         }
         let data2 = {
-            "Id": idEmpleado,
+            "id": idEmpleado,
             "deposito": paramResponse2
         }
         try {

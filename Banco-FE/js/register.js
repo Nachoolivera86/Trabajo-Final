@@ -6,23 +6,36 @@ let saldo = 0;
 let datosCuentas1 = 0;
 let datosCuentas2 = 0;
 let datosCuentas3 = 0;
+let datosUsuarios = 0;
+let datosClientes = 0;
+let ultimoIdUsuario = 0;
+
 
 
 function registrar(){
     user = document.getElementById("register-user").value;
     password = document.getElementById("register-password").value;
     checkPass = document.getElementById("register-passwordd").value;
+
+    telefono = document.getElementById("register-telefono").value;
+    mail = document.getElementById("register-mail").value;
+    direccion = document.getElementById("register-direccion").value;
+
     console.log(user);
     console.log(password);
     console.log(checkPass);
+    console.log(telefono);
+    console.log(mail);
+    console.log(direccion);
     try {
-        if (!user || !password || !checkPass){
+        if (!user || !password || !checkPass || !telefono || !mail || !direccion){
             console.log("Uno de los campos esta vacio")
             return
         } 
     
         if(password === checkPass){
             registrarUsuario();
+            registrarCli();
             registrarCuenta();
         }else{
             console.log("datos invalidos");
@@ -102,9 +115,9 @@ const registrarUsuario = async () => {
     let ultimoIdUsuario = (datosUsuarios.length) + 1;
     console.log(ultimoIdUsuario);
     let data2 = {
-        "Id" : ultimoIdUsuario,
-        "User": user,
-        "Password": password
+        "id" : ultimoIdUsuario,
+        "user": user,
+        "password": password
     }
     try {
         let response3 = await fetch('http://localhost:8080/api/v1/usuario/insert', 
@@ -130,11 +143,11 @@ const registrarCli = async () => {
     let ultimoIdCli = (datosClientes.length) + 1;
     console.log(ultimoIdCli);
     let data1 = {
-        "Id" : ultimoIdCli,
-        "Telefono" : Telefono,
-        "Mail" : Mail,
-        "Direccion" : Direccion,
-        "UsuarioId" : ultimoIdUsuario
+        "id" : ultimoIdCli,
+        "telefono" : telefono,
+        "mail" : mail,
+        "direccion" : direccion,
+        "usuarioid" : ultimoIdUsuario
     } 
     try {
         let response = await fetch('http://localhost:8080/api/v1/cliente/insert', 
@@ -166,7 +179,7 @@ const registrarCuenta = async () => {
         "nrocta": nuevoNroCta,
         "cbu": nuevoCbu,
         "saldo": saldo,
-        "ClienteId": clienteId
+        "clienteid": clienteId
     }
     try {
         let response4 = await fetch('http://localhost:8080/api/v1/cuenta/insert', 
@@ -189,7 +202,7 @@ const registrarCuenta = async () => {
 }
 
 datosCli();
-
+registrarCli();
 datosUsuario();
 datosCuenta();
 maxIdCuenta();
