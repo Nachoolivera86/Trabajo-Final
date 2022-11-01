@@ -100,12 +100,84 @@ const depositarImporte = async () =>{
         console.log("salio por el catch");
     }
 
- 
-
 }
 
 let depositar = document.getElementById("depositar");
 depositar.addEventListener("click",depositarImporte);
+
+let transferencia = async () => {
+    let paramResponse = 0
+    let paramResponse2 = 0
+    try{
+		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
+		paramResponse = Number(response[0].saldo); 
+        console.log(paramResponse)
+	}catch (error){
+		console.log(error)
+	}
+    let idEmpleado = Number(prompt("Ingrese el id del empleado a transferir: ")) 
+    let importeAtransferir = Number(prompt("Ingrese un importe a transferir:" ));
+    if (importeAtransferir > paramResponse) {
+        alert("Saldo insuficiente");
+    } else {
+        alert("Pago correcto");
+        try{
+            let response2 = await fetch('http://localhost:8080/api/v1/cuenta/'+idEmpleado).then(res => res.json())
+            paramResponse2 = Number(response2[0].saldo); 
+        }catch (error){
+            console.log(error)
+        }
+        paramResponse2 = paramResponse2 + importeAtransferir;
+        let deposito = paramResponse - importeAtransferir;
+        let data = {
+            "id" : id,
+            "deposito": deposito,
+        }
+        try {
+            let response2 = await fetch('http://localhost:8080/api/v1/cuenta/update/'+ id , {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (await response2.json()) {
+                console.log("Salio todo bien");
+             }
+             else {
+                 console.log("todo mal")
+             }
+        } catch (error) {
+            console.log("salio or el catch");
+        }
+        let data2 = {
+            "id": idEmpleado,
+            "deposito": paramResponse2
+        }
+        try {
+            let response3 = await fetch('http://localhost:8080/api/v1/cuenta/update/'+ idEmpleado , {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data2)
+            });
+            if (await response3.json()) {
+                console.log("Salio todo bien");
+             }
+             else {
+                 console.log("todo mal")
+             }
+        } catch (error) {
+            console.log("salio or el catch");
+        }
+    }
+    
+}
+
+
+let transferencia1 = document.getElementById("transferir");
+transferencia1.addEventListener("click",transferencia);
 
 let extraerSaldo = async () => {
     let paramResponse = 0
