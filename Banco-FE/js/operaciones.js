@@ -1,6 +1,7 @@
 let params = new URLSearchParams(location.search);
 let id = params.get('Id');
 let usuario = params.get('User');
+let validacion = false;
 
 
 
@@ -314,5 +315,15 @@ const traerUsuario = async () => {
 	}
 
 }
+
+const salir = () => {
+
+    if (validacion === false) {
+        window.location.replace("http://localhost:5501/Banco-FE/index.html"); 
+    }
+}    
+
+let btnSalir = document.getElementById('btnSalir');
+btnSalir.addEventListener('click',salir);
 
 traerUsuario();
