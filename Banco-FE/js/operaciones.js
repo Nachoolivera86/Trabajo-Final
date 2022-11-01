@@ -20,10 +20,24 @@ const consultaSaldo = async () => {
 let consulta = document.getElementById("consultar");
 consulta.addEventListener("click",consultaSaldo);
 
+const consultaCbu = async () => {
+	try{
+		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
+		//console.log(response)
+        mostrarCbu(response);
+
+
+	}catch (error){
+		console.log(error)
+	}
+}
+
+
+let consulta1 = document.getElementById("consultarCbu");
+consulta1.addEventListener("click",consultaCbu);
 
 
 
-//consultaSaldo();
 
 function  mostrarSaldo(paramResponse) {
     console.log(paramResponse)
@@ -35,6 +49,18 @@ function  mostrarSaldo(paramResponse) {
            `;
 
     document.querySelector("#consultaSaldo").innerHTML = html;
+}
+
+function  mostrarCbu(paramResponse) {
+    console.log(paramResponse)
+    console.log(paramResponse[0].cbu)
+
+    let html = "";
+         html += `El cbu correspondiente a su cuenta es: ${paramResponse[0].cbu} 
+        
+           `;
+
+    document.querySelector("#consultaCbu").innerHTML = html;
 }
 
 
