@@ -64,11 +64,6 @@ function  mostrarCbu(paramResponse) {
 }
 
 
-function verExtraccion(){
-    document.querySelector("#consultaSaldo").classList.add('ocultarDisplay');
-    document.querySelector('#extraccion').classList.add('mostrarDisplay');
-
-}
 
 const depositarImporte = async () =>{
    let paramResponse = 0
