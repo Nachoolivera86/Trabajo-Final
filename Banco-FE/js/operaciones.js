@@ -1,7 +1,10 @@
+import registrarCuenta from '../js/register'
+
 let params = new URLSearchParams(location.search);
 let id = params.get('Id');
 let usuario = params.get('User');
 let validacion = false;
+
 
 
 
@@ -326,4 +329,10 @@ const salir = () => {
 let btnSalir = document.getElementById('btnSalir');
 btnSalir.addEventListener('click',salir);
 
+let btnCrearCta1 = document.getElementById("btnCrearCta");
+btnCrearCta1.addEventListener("click",registrarCuenta);
+
+
+
 traerUsuario();
+

@@ -36,7 +36,7 @@ function registrar(){
         if(password === checkPass){
             registrarUsuario();
             registrarCli();
-            registrarCuenta();
+            
         }else{
             console.log("datos invalidos");
         }
@@ -111,11 +111,7 @@ const maxIdCLiente = async () => {
 }
 
 const registrarUsuario = async () => {
-
-    let ultimoIdUsuario = (datosUsuarios.length) + 1;
-    console.log(ultimoIdUsuario);
     let data2 = {
-        "id" : ultimoIdUsuario,
         "user": user,
         "password": password
     }
@@ -140,10 +136,7 @@ const registrarUsuario = async () => {
 }
 
 const registrarCli = async () => {
-    let ultimoIdCli = (datosClientes.length) + 1;
-    console.log(ultimoIdCli);
     let data1 = {
-        "id" : ultimoIdCli,
         "telefono" : telefono,
         "mail" : mail,
         "direccion" : direccion,
@@ -200,6 +193,7 @@ const registrarCuenta = async () => {
         console.log("salio por el catch");
     }
 }
+
 
 datosCli();
 registrarCli();
