@@ -47,7 +47,7 @@ const getUserById = (pool, id, callback) => {
 };
 
 const insertUser = (pool, body, callback) => {
-  let query = `INSERT into usuario VALUES (${body.Id},"${body.User}","${body.Password}")`
+  let query = `INSERT into usuario VALUES (${body.id},"${body.user}","${body.password}")`
   console.log(query)
 
   pool.getConnection((error, connection) => {
