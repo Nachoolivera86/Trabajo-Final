@@ -39,8 +39,16 @@
      <div class="row">
        <div class="col-lg-4 col-md-6">
          <div class="icon-box-cards">
-
+          <div class="importeDep" id="depositarImporte">
+            <label class="label" for="login-user">Ingrese importe a depositar : </label>
+            <input class="input" id="deposito" type="number" required>
             
+            <button type="submit" class="importeDep btn-depositar" id="btnDep">Continuar</button>
+          </div>
+
+          <p class="mensajeExito1" id="mensajeExito">Su operación se realizo con Exitoo!!</p>
+         
+          <div><p class="importe" id="presioneOperar"></p></div>
           <div><p class="importe" id="consultaSaldo"></p></div>
           <div><p class="importe" id="consultaCbu"></p></div>
            <div class="icon-cards"><i class="bi bi-emoji-heart-eyes"></i></div>
@@ -49,6 +57,54 @@
      </div>
    </div>
 </section><!-- End Featured Services Section -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+  <div class="footer-top">
+
+    <div class="container">
+
+      <div class="row  justify-content-center">
+        <div class="col-lg-6">
+          <p>Para recibir notificaciones de novedades, suscribite y siguenos en nuestras redes.</p>
+        </div>
+      </div>
+
+      <div class="row footer-newsletter justify-content-center">
+        <div class="col-lg-6">
+          <form action="" method="post">
+            <input type="email" name="email" placeholder="Ingresa tu Email" id="varMail">
+            <input type="submit" value="Suscribirme" id="btnSusc">
+          </form>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="contacto.html" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="contacto.html" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="contacto.html" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="contacto.html" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="contacto.html" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container footer-bottom clearfix">
+    <div class="copyright">
+      &copy; Copyright <strong><span>ISFDyT!!</span></strong>. Todos los derechos reservados
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
+      Diseñado por: <a class="autores" href="https://bootstrapmade.com/">José, Marcos // Olivera, Ignacio</a>
+    </div>
+  </div>
+</footer><!-- End Footer -->
+
 
    </body>
    <script src="./js/operaciones.js"></script>

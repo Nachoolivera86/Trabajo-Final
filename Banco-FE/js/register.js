@@ -6,37 +6,50 @@ let saldo = 0;
 let datosCuentas1 = 0;
 let datosCuentas2 = 0;
 let datosCuentas3 = 0;
-let datosUsuarios = 0;
 let datosClientes = 0;
 let ultimoIdUsuario = 0;
 
 
+const datosCuenta = fetch('http://localhost:8080/api/v1/cuentas').then(res=>res.json());
+const datosUsuario = fetch('http://localhost:8080/api/v1/usuario').then(res=>res.json());
+const maxIdCuenta = fetch('http://localhost:8080/api/v1/maxIdCu').then(res=>res.json());
+const maxIdCbu = fetch('http://localhost:8080/api/v1/maxCbu').then(res=>res.json());
+const maxIdCLiente = fetch('http://localhost:8080/api/v1/maxCli').then(res=>res.json());
 
-function registrar(){
+
+
+function registrar(e){
+    e.preventDefault();
+
     user = document.getElementById("register-user").value;
     password = document.getElementById("register-password").value;
     checkPass = document.getElementById("register-passwordd").value;
-
+/*
     telefono = document.getElementById("register-telefono").value;
     mail = document.getElementById("register-mail").value;
     direccion = document.getElementById("register-direccion").value;
-
+*/  
     console.log(user);
     console.log(password);
     console.log(checkPass);
-    console.log(telefono);
-    console.log(mail);
-    console.log(direccion);
+    
     try {
-        if (!user || !password || !checkPass || !telefono || !mail || !direccion){
+        if (!user || !password || !checkPass ){
             console.log("Uno de los campos esta vacio")
             return
         } 
     
         if(password === checkPass){
-            registrarUsuario();
-            registrarCli();
-            registrarCuenta();
+            Promise.all([datosUsuario])
+            .then(resultArray => { 
+                registrarUsuario(resultArray[0],user,password)})
+            .then( Promise.all([datosCuenta,maxIdCuenta,maxIdCbu,maxIdCLiente])
+            .then(resultArray => { 
+                registrarCuenta(resultArray[0],resultArray[1],resultArray[2],resultArray[3])})
+            )
+            .catch(e => console.log('Error: ' + e));
+           
+            
         }else{
             console.log("datos invalidos");
         }
@@ -47,18 +60,6 @@ function registrar(){
     
 }
 
-let btnRegistrar = document.getElementById("btnContinue");
-btnRegistrar.addEventListener("click",registrar);
-
-const datosUsuario = async () => {
-	try{
-		let usuarios = await fetch('http://localhost:8080/api/v1/usuario').then(res => res.json())
-		datosUsuarios = usuarios;
-        console.log(datosUsuarios)
-    }catch (error){
-		console.log(error)
-	}
-}
 
 const datosCli = async () => {
     try {
@@ -70,47 +71,8 @@ const datosCli = async () => {
     }
 }
 
-const datosCuenta = async () => {
-    try {
-        let cuentas = await fetch('http://localhost:8080/api/v1/cuentas').then(res => res.json())
-        datosCuentas = cuentas;
-        console.log(datosCuentas)
-    } catch (error) {
-        console.log(error)
-    }
-}
 
-const maxIdCuenta = async () => {
-    try {
-        let cuentas = await fetch('http://localhost:8080/api/v1/maxIdCu').then(res => res.json())
-        datosCuentas1 = cuentas;
-        console.log(datosCuentas1)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-const maxIdCbu = async () => {
-    try {
-        let cuentas = await fetch('http://localhost:8080/api/v1/maxCbu').then(res => res.json())
-        datosCuentas2 = cuentas;
-        console.log(datosCuentas2)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-const maxIdCLiente = async () => {
-    try {
-        let cuentas = await fetch('http://localhost:8080/api/v1/maxCli').then(res => res.json())
-        datosCuentas3 = cuentas;
-        console.log(datosCuentas3)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-const registrarUsuario = async () => {
+const registrarUsuario = async (datosUsuarios,user,password) => {
 
     let ultimoIdUsuario = (datosUsuarios.length) + 1;
     console.log(ultimoIdUsuario);
@@ -119,7 +81,9 @@ const registrarUsuario = async () => {
         "user": user,
         "password": password
     }
+
     try {
+        console.log(data2);
         let response3 = await fetch('http://localhost:8080/api/v1/usuario/insert', 
         {
             method: 'POST',
@@ -139,6 +103,7 @@ const registrarUsuario = async () => {
     }
 }
 
+/*
 const registrarCli = async () => {
     let ultimoIdCli = (datosClientes.length) + 1;
     console.log(ultimoIdCli);
@@ -169,11 +134,23 @@ const registrarCli = async () => {
     }
 }
 
-const registrarCuenta = async () => {
+*/
+
+const promiseTimeOut = () => {
+    setTimeout(() => {
+        registrarCuenta()
+    },4000);
+}
+
+const registrarCuenta = async (datosCuentas,datosCuentas1,datosCuentas2,datosCuentas3) => {
+    console.log(datosCuentas);
+    console.log(datosCuentas1);
+    console.log(datosCuentas2);
+    console.log(datosCuentas3);
     let nuevoIdCuenta = (datosCuentas.length) + 1;
-    let nuevoNroCta = (datosCuentas1[0].maximoNumeroCuenta) + 1;
+    let nuevoNroCta = (datosCuentas3[0].maximoNumeroCuenta) + 1;
     let nuevoCbu = (datosCuentas2[0].maximoNumeroCbu) +1;
-    let clienteId = (datosCuentas3[0].maximoNumeroClienteId) + 1;
+    let clienteId = (datosCuentas1[0].maximoNumeroCliente) + 1;
     let data3 = {
         "id" : nuevoIdCuenta,
         "nrocta": nuevoNroCta,
@@ -202,9 +179,11 @@ const registrarCuenta = async () => {
 }
 
 datosCli();
-registrarCli();
-datosUsuario();
-datosCuenta();
-maxIdCuenta();
-maxIdCbu();
-maxIdCLiente();
+//registrarCli();
+
+//datosCuenta();
+//maxIdCuenta();
+//maxIdCbu();
+//maxIdCLiente();
+let btnRegistrar = document.getElementById("btnContinue");
+btnRegistrar.addEventListener("click",registrar);

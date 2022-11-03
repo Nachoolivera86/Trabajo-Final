@@ -2,6 +2,9 @@ let params = new URLSearchParams(location.search);
 let id = params.get('Id');
 let usuario = params.get('User');
 let validacion = false;
+let contador = 0;
+
+
 
 
 
@@ -9,23 +12,41 @@ const consultaSaldo = async () => {
 	try{
 		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
 		//console.log(response)
-        mostrarSaldo(response);
-
+        if(contador == 0) {
+            mostrarSaldo(response);
+            contador = 1;
+        } else {
+            ocultarSaldo();
+            contador = 0;
+        }
+        
 
 	}catch (error){
 		console.log(error)
 	}
+}
+
+const ocultarSaldo = () => {
+    let html = "";
+
+    document.querySelector("#consultaSaldo").innerHTML = html;
+
 }
 
 
 let consulta = document.getElementById("consultar");
-consulta.addEventListener("click",consultaSaldo);
+consulta.addEventListener("click",consultaSaldo,true);
 
 const consultaCbu = async () => {
 	try{
 		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
-		//console.log(response)
-        mostrarCbu(response);
+		if(contador == 0) {
+            mostrarCbu(response);
+            contador = 1;
+        } else {
+            ocultarCbu();
+            contador = 0;
+        }
 
 
 	}catch (error){
@@ -33,9 +54,15 @@ const consultaCbu = async () => {
 	}
 }
 
+const ocultarCbu = () => {
+    let html = "";
+
+    document.querySelector("#consultaCbu").innerHTML = html;
+}
+
 
 let consulta1 = document.getElementById("consultarCbu");
-consulta1.addEventListener("click",consultaCbu);
+consulta1.addEventListener("click",consultaCbu,true);
 
 
 
@@ -43,7 +70,7 @@ consulta1.addEventListener("click",consultaCbu);
 function  mostrarSaldo(paramResponse) {
     console.log(paramResponse)
     console.log(paramResponse[0].saldo)
-
+   
     let html = "";
          html += `El saldo de su cuenta es: ${paramResponse[0].saldo}  pesos
         
@@ -55,8 +82,8 @@ function  mostrarSaldo(paramResponse) {
 function  mostrarCbu(paramResponse) {
     console.log(paramResponse)
     console.log(paramResponse[0].cbu)
-
-    let html = "";
+  
+        let html = "";
          html += `El cbu correspondiente a su cuenta es: ${paramResponse[0].cbu} 
         
            `;
@@ -64,9 +91,21 @@ function  mostrarCbu(paramResponse) {
     document.querySelector("#consultaCbu").innerHTML = html;
 }
 
+const depositarImp = () => {
+    document.getElementById("depositarImporte").classList.add("aux");
+    document.getElementById("btnDep").classList.add("aux");
+}
+let consulta2 = document.getElementById("depositar");
+consulta2.addEventListener("click",depositarImp);
 
 
-const depositarImporte = async () =>{
+const mostrarMensaje = () => {
+    document.getElementById("mensajeExito").style.visibility = "visible" 
+  
+}
+
+
+const depositarImporte = async (deposito) =>{
    let paramResponse = 0
     try{
 		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
@@ -76,8 +115,7 @@ const depositarImporte = async () =>{
 		console.log(error)
 	}
 
-    let deposito = Number(prompt("Ingrese un importea depositar:" ));
-    deposito = deposito + paramResponse;
+    deposito = paramResponse + deposito;
     console.log(deposito);
     let data = {
         "id" : id,
@@ -93,6 +131,7 @@ const depositarImporte = async () =>{
         });
         if (await response2.json()) {
             console.log("Salio todo bien");
+            mostrarMensaje();
          }
          else {
              console.log("todo mal")
@@ -103,8 +142,15 @@ const depositarImporte = async () =>{
 
 }
 
-let depositar = document.getElementById("depositar");
-depositar.addEventListener("click",depositarImporte);
+function funcionAuxiliar(){
+    let valorDeposito = Number(document.getElementById("deposito").value); 
+    depositarImporte(valorDeposito);
+    
+}
+
+let btnDep = document.getElementById("btnDep");
+btnDep.addEventListener("click",funcionAuxiliar);
+
 
 let transferencia = async () => {
     let paramResponse = 0
@@ -149,7 +195,7 @@ let transferencia = async () => {
                  console.log("todo mal")
              }
         } catch (error) {
-            console.log("salio or el catch");
+            console.log("salio por el catch");
         }
         let data2 = {
             "id": idEmpleado,
@@ -214,7 +260,7 @@ let extraerSaldo = async () => {
                  console.log("todo mal")
              }
         } catch (error) {
-            console.log("salio or el catch");
+            console.log("salio por el catch");
         }
     }
     
@@ -271,7 +317,7 @@ let pagarSueldo = async () => {
                  console.log("todo mal")
              }
         } catch (error) {
-            console.log("salio or el catch");
+            console.log("salio por el catch");
         }
         let data2 = {
             "id": idEmpleado,
@@ -292,7 +338,7 @@ let pagarSueldo = async () => {
                  console.log("todo mal")
              }
         } catch (error) {
-            console.log("salio or el catch");
+            console.log("salio por el catch");
         }
     }
     

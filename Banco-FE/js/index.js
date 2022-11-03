@@ -45,7 +45,7 @@ const llamada = async () => {
 function redireccionar(){
 	console.log("llegue a redireccionar");
 	
-	window.location.replace("http://localhost:5500/Banco-FE/operaciones.html?Id="+id+"&User="+usuario);
+	window.location.replace("http://localhost:5501/Banco-FE/operaciones.html?Id="+id+"&User="+usuario);
 }
 
 llamada();
