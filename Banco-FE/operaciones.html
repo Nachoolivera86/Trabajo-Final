@@ -17,7 +17,7 @@
      <nav id="navbar" class="navbar">
       <ul class="menu">
          <li><a class="nav-link" id="depositar">Depositar</a></li>
-         <li><a class="nav-link" id="extraccion">Extraer</a></li>
+         <li><a class="nav-link" id="extraer">Extraer</a></li>
          <li><a class="nav-link" id="transferir">Transferir</a></li>
          <li><a class="nav-link" id="consultar">Consultar Saldo</a></li>
          <li><a class="nav-link" id="consultarCbu">Consulta Cbu</a></li>
@@ -42,9 +42,22 @@
           <div class="importeDep" id="depositarImporte">
             <label class="label" for="login-user">Ingrese importe a depositar : </label>
             <input class="input" id="deposito" type="number" required>
-            
             <button type="submit" class="importeDep btn-depositar" id="btnDep">Continuar</button>
           </div>
+          <div class="importeExt" id="extraerImporte">
+            <label class="label" for="login-user">Ingrese importe a extraer : </label>
+            <input class="input" id="extraccion" type="number" required>
+            <button type="submit" class="importeDep btn-depositar" id="btnExt">Continuar</button>
+          </div>
+
+          <div class="importeTra" id="transferirImporte">
+            <label class="label" for="login-user">Ingrese id a transferir : </label>
+            <input class="input" id="idTrans" type="number" required>
+            <label class="label" for="login-user">Ingrese importe a transferir : </label>
+            <input class="input" id="transferencia" type="number" required>
+            <button type="submit" class="importeDep btn-depositar" id="btnTra">Continuar</button>
+          </div>
+          
 
           <p class="mensajeExito1" id="mensajeExito">Su operación se realizo con Exitoo!!</p>
          

@@ -99,9 +99,9 @@ let consulta2 = document.getElementById("depositar");
 consulta2.addEventListener("click",depositarImp);
 
 
+
 const mostrarMensaje = () => {
     document.getElementById("mensajeExito").style.visibility = "visible" 
-  
 }
 
 
@@ -152,7 +152,73 @@ let btnDep = document.getElementById("btnDep");
 btnDep.addEventListener("click",funcionAuxiliar);
 
 
-let transferencia = async () => {
+const extraerImp = () => {
+    document.getElementById("extraerImporte").classList.add("aux1");
+    document.getElementById("btnExt").classList.add("aux1");
+}
+let consulta3 = document.getElementById("extraer");
+consulta3.addEventListener("click",extraerImp);
+
+
+
+let extraerSaldo = async (valorExtraer) => {
+    let paramResponse = 0
+    try{
+		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
+		paramResponse = Number(response[0].saldo); 
+        console.log(paramResponse)
+	}catch (error){
+		console.log(error)
+	}
+
+    if (valorExtraer > paramResponse) {
+        alert("Saldo insuficiente");
+    } else {
+        alert("Extraccion correcta");
+        let deposito = paramResponse - valorExtraer;
+        let data = {
+            "id" : id,
+            "deposito": deposito
+        }
+        try {
+            let response2 = await fetch('http://localhost:8080/api/v1/cuenta/update/'+ id , {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (await response2.json()) {
+                console.log("Salio todo bien");
+                mostrarMensaje();
+             }
+             else {
+                 console.log("todo mal")
+             }
+        } catch (error) {
+            console.log("salio por el catch");
+        }
+    }
+    
+}
+
+function funcionAuxiliar1(){
+    let valorExtrae = Number(document.getElementById("extraccion").value); 
+    extraerSaldo(valorExtrae)
+}
+
+let btnExt = document.getElementById("btnExt");
+btnExt.addEventListener("click",funcionAuxiliar1);
+
+
+const transferirImp = () => {
+    document.getElementById("transferirImporte").classList.add("aux2");
+    document.getElementById("btnTra").classList.add("aux2");
+}
+let consulta4 = document.getElementById("transferir");
+consulta4.addEventListener("click",transferirImp);
+
+let transferencia = async (idEmpleado,importeAtransferir) => {
     let paramResponse = 0
     let paramResponse2 = 0
     try{
@@ -162,8 +228,6 @@ let transferencia = async () => {
 	}catch (error){
 		console.log(error)
 	}
-    let idEmpleado = Number(prompt("Ingrese el id del empleado a transferir: ")) 
-    let importeAtransferir = Number(prompt("Ingrese un importe a transferir:" ));
     if (importeAtransferir > paramResponse) {
         alert("Saldo insuficiente");
     } else {
@@ -190,6 +254,7 @@ let transferencia = async () => {
             });
             if (await response2.json()) {
                 console.log("Salio todo bien");
+                mostrarMensaje();
              }
              else {
                  console.log("todo mal")
@@ -223,55 +288,14 @@ let transferencia = async () => {
 }
 
 
-let transferencia1 = document.getElementById("transferir");
-transferencia1.addEventListener("click",transferencia);
-
-let extraerSaldo = async () => {
-    let paramResponse = 0
-    try{
-		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
-		paramResponse = Number(response[0].saldo); 
-        console.log(paramResponse)
-	}catch (error){
-		console.log(error)
-	}
-    let extraccion = Number(prompt("Ingrese un importe a extraer:" ));
-    if (extraccion > paramResponse) {
-        alert("Saldo insuficiente");
-    } else {
-        alert("Extraccion correcta");
-        let deposito = paramResponse - extraccion;
-        let data = {
-            "id" : id,
-            "deposito": deposito
-        }
-        try {
-            let response2 = await fetch('http://localhost:8080/api/v1/cuenta/update/'+ id , {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-            if (await response2.json()) {
-                console.log("Salio todo bien");
-             }
-             else {
-                 console.log("todo mal")
-             }
-        } catch (error) {
-            console.log("salio por el catch");
-        }
-    }
-    
-  
-
+function funcionAuxiliar2(){
+    let idTra = Number(document.getElementById("idTrans").value); 
+    let valorTra = Number(document.getElementById("transferencia").value); 
+    transferencia(idTra,valorTra)
 }
 
-
-
-let extraccion = document.getElementById("extraccion");
-extraccion.addEventListener("click",extraerSaldo);
+let btnTra = document.getElementById("btnTra");
+btnTra.addEventListener("click",funcionAuxiliar2);
 
 
 let pagarSueldo = async () => {
