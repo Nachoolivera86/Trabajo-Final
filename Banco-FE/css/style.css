@@ -9,6 +9,13 @@ body {
 	font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
 	background-image: url(https://www.avvillas.com.co/avvillas/novedad-Tarjeta-Debito-Mastercard/img/header.jpg);
 }
+
+.user {
+	font-size: 20px;
+	font-family: monospace;
+    margin: 5px;
+}
+
 .title {
 	text-align: center;
 	margin-top: 150px;
@@ -41,11 +48,19 @@ body {
 
 .form-wrapper {
 	animation: hideLayer .3s ease-out forwards;
-	text-align: center;
 	font-weight: bold;
 	margin-top: 10%;
+	text-align: left;
+    justify-content: center;
+    display: grid;
+
 	
 }
+
+input0 {
+	margin-left: 20px;
+}
+
 .box-log {
 	background-image: url(https://img.freepik.com/vector-gratis/fondo-oscuro-fibra-carbono-lineas-metal_1017-23624.jpg?w=2000);
 	margin: auto;

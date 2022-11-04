@@ -262,13 +262,30 @@ section {
     display: hide;
 }
 
-.importeDep{
+.importeDep {
+  display: none;
+}
+
+.importeExt {
+  display: none;
+}
+
+.importeTra {
   display: none;
 }
 
 .aux {
   display: flex; 
 }
+
+.aux1 {
+  display: flex; 
+}
+
+.aux2 {
+  display: flex; 
+}
+
 .label {
   font-size: 18px;
 }
