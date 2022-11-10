@@ -11,7 +11,7 @@ let contador = 0;
 const consultaSaldo = async () => {
 	try{
 		let response = await fetch('http://localhost:8080/api/v1/cuenta/'+id).then(res => res.json())
-		//console.log(response)
+
         if(contador == 0) {
             mostrarSaldo(response);
             contador = 1;
@@ -297,7 +297,7 @@ function funcionAuxiliar2(){
 let btnTra = document.getElementById("btnTra");
 btnTra.addEventListener("click",funcionAuxiliar2);
 
-
+/*
 let pagarSueldo = async () => {
     let paramResponse = 0
     let paramResponse2 = 0
@@ -371,14 +371,16 @@ let pagarSueldo = async () => {
 
 let pagoSueldos = document.getElementById("pagoSueldos");
 pagoSueldos.addEventListener("click",pagarSueldo);
+*/
 
 const traerUsuario = async () => {
     try{
-		let response = await fetch('http://localhost:8080/api/v1/individuo/'+id).then(res => res.json())
-		let nombre = response[0].nombre; 
-        let apellido = response[0].apellido;
-        let nombreCompleto = nombre + " " + apellido
-        let campoUsuario = document.getElementById("nombreUsuario").innerHTML = nombreCompleto
+		//let response = await fetch('http://localhost:8080/api/v1/individuo/'+id).then(res => res.json())
+        let response = await fetch('http://localhost:8080/api/v1/usuario/'+id).then(res => res.json())
+		let nombre = response[0].user; 
+        //let nombreCompleto = nombre + " " + apellido
+        let campoUsuario = document.getElementById("nombreUsuario").innerHTML = nombre
+        //let campoUsuario = document.getElementById("nombreUsuario").innerHTML = nombreCompleto
       
 	}catch (error){
 		console.log(error)

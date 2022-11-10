@@ -25,8 +25,14 @@ body {
 .bank {
 	font-weight: bold;
 	font-size: 80px;
+	margin-top: 10px;
 	
 }
+
+.h3 {
+	position: relative;
+}
+
 .forms-section {
 	display: flex;
 	flex-direction: column;
@@ -50,27 +56,37 @@ body {
 	animation: hideLayer .3s ease-out forwards;
 	font-weight: bold;
 	margin-top: 10%;
-	text-align: left;
-    justify-content: center;
-    display: grid;
-
+	text-align: center;
+	padding-bottom: 50px;
+    
+    
 	
 }
 
-input0 {
-	margin-left: 20px;
-}
 
-.box-log {
-	background-image: url(https://img.freepik.com/vector-gratis/fondo-oscuro-fibra-carbono-lineas-metal_1017-23624.jpg?w=2000);
+.Box {
+	background-color: rgb(20, 18, 18);
 	margin: auto;
 	padding-top: 70px;
 	position: absolute;
-	right: 40%;
-	bottom: 25%;
+	right: 27%;
+	bottom: 20%;
 	border-radius: 10px;
-	height: 30%;
-	width: 20%;
+	height: 55%;
+	width: 45%;
+	color: rgb(170, 33, 33);
+	font-size: 25px;
+}
+.box-log {
+	background-color: rgb(20, 18, 18);
+	margin: auto;
+	padding-top: 70px;
+	position: absolute;
+	right: 37%;
+	bottom: 12%;
+	border-radius: 10px;
+	height: 35%;
+	width: 25%;
 	color: rgb(170, 33, 33);
 	font-size: 25px;
 }

@@ -28,13 +28,13 @@ function registrar(e){
     telefono = document.getElementById("register-telefono").value;
     mail = document.getElementById("register-mail").value;
     direccion = document.getElementById("register-direccion").value;
-*/  
+*/ 
     console.log(user);
     console.log(password);
     console.log(checkPass);
-    
+      
     try {
-        if (!user || !password || !checkPass ){
+        if (!user || !password || !checkPass){
             console.log("Uno de los campos esta vacio")
             return
         } 
@@ -93,7 +93,7 @@ const registrarUsuario = async (datosUsuarios,user,password) => {
             body: JSON.stringify(data2)
         });
         if (await response3.json()) {
-            console.log("Salio todo bien");
+            console.log("Salio todo bien en registrar usuario");
          }
          else {
              console.log("todo mal")
@@ -124,7 +124,7 @@ const registrarCli = async () => {
             body: JSON.stringify(data1)
         });
         if (await response.json()) {
-            console.log("Salio todo bien");
+            console.log("Salio todo bien cliente");
          }
          else {
              console.log("todo mal")
@@ -133,8 +133,8 @@ const registrarCli = async () => {
         console.log("salio por el catch");
     }
 }
-
 */
+
 
 const promiseTimeOut = () => {
     setTimeout(() => {
@@ -168,7 +168,7 @@ const registrarCuenta = async (datosCuentas,datosCuentas1,datosCuentas2,datosCue
             body: JSON.stringify(data3)
         });
         if (await response4.json()) {
-            console.log("Salio todo bien en cuentas");
+            console.log("Salio todo bien en generar cuentas");
          }
          else {
              console.log("todo mal")
