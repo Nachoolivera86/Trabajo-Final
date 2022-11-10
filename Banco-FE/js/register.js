@@ -24,11 +24,11 @@ function registrar(e){
     user = document.getElementById("register-user").value;
     password = document.getElementById("register-password").value;
     checkPass = document.getElementById("register-passwordd").value;
-/*
+
     telefono = document.getElementById("register-telefono").value;
     mail = document.getElementById("register-mail").value;
     direccion = document.getElementById("register-direccion").value;
-*/  
+
     console.log(user);
     console.log(password);
     console.log(checkPass);
@@ -44,6 +44,8 @@ function registrar(e){
             .then(resultArray => { 
                 registrarUsuario(resultArray[0],user,password)})
             .then( Promise.all([datosCuenta,maxIdCuenta,maxIdCbu,maxIdCLiente])
+            .then(resultArray => {
+                registrarCli(resultArray[0],telefono, mail, direccion)})
             .then(resultArray => { 
                 registrarCuenta(resultArray[0],resultArray[1],resultArray[2],resultArray[3])})
             )
@@ -103,7 +105,7 @@ const registrarUsuario = async (datosUsuarios,user,password) => {
     }
 }
 
-/*
+
 const registrarCli = async () => {
     let ultimoIdCli = (datosClientes.length) + 1;
     console.log(ultimoIdCli);
@@ -134,7 +136,7 @@ const registrarCli = async () => {
     }
 }
 
-*/
+
 
 const promiseTimeOut = () => {
     setTimeout(() => {
