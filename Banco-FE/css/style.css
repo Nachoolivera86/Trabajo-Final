@@ -355,6 +355,12 @@ body {
 	font-size: medium;
 	color: rgb(170, 33, 33);
 }
+
+.register1{
+	color: rgb(170, 33, 33);
+	text-decoration: none;
+}
+
 .btn-ChangePass {
 	color: #fbfdff;
 	background: #779b3e;

@@ -178,10 +178,11 @@ const registrarCuenta = async (datosCuentas,datosCuentas1,datosCuentas2,datosCue
     }
 }
 
-datosCli();
+//datosCli();
 //registrarCli();
 
 //datosCuenta();
+//datosUsuario();
 //maxIdCuenta();
 //maxIdCbu();
 //maxIdCLiente();
