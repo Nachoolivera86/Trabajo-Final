@@ -11,7 +11,7 @@
   <header id="header" class="fixed-top">
    <div class="container d-flex align-items-center justify-content-between">
      
-   <h4 class="saludo">Bienvenido <span class="user" id="nombreUsuario"></span></h4>
+   <h4 class="saludo">Bienvenido/a <span class="user" id="nombreUsuario"></span></h4>
    <p class="opciones">¿Que operación desea realizar?</p>  
    <h1 class="titulo">Menu Operaciones</h1>
      <nav id="navbar" class="navbar">
@@ -50,7 +50,7 @@
           </div>
 
           <div class="importeTra" id="transferirImporte">
-            <label class="label" for="login-user">Ingrese id a transferir : </label>
+            <label class="label" for="login-user">Ingrese Cbu a transferir : </label>
             <input class="input" id="idTrans" type="number" required>
             <label class="label" for="login-user">Ingrese importe a transferir : </label>
             <input class="input" id="transferencia" type="number" required>
@@ -59,8 +59,11 @@
           
 
           <p class="mensajeExito1" id="mensajeExito">Su operación se realizo con Exitoo!!</p>
-         
+          <p class="mensajeExito1" id="mensajeError">Ops! Algo</p>
+          <p class="mensajeExito1" id="mensajeFondosInsuficientes">El saldo de su cuenta es insuficiente para realizar esta operación!</p>
+          <p class="mensajeExito1" id="mensajeExtraccionCorrecta">Su extraccion se realizo correctamente!!</p>
           <div><p class="importe" id="presioneOperar"></p></div>
+          <div><p class="importe" id="ocultarImporte"></p></div>
           <div><p class="importe" id="consultaSaldo"></p></div>
           <div><p class="importe" id="consultaCbu"></p></div>
            <div class="icon-cards"><i class="bi bi-emoji-heart-eyes"></i></div>

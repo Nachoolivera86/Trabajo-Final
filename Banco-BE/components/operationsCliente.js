@@ -8,6 +8,7 @@ const httpStatus = require('http-status')
 const getClient = (pool, req, callback) => {
 
   let query = "SELECT * FROM cliente";
+  
 
   pool.getConnection((error, connection) => {
     if (error) throw error;

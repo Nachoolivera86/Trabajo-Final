@@ -1,4 +1,5 @@
 
+
 let user = "";
 let password = "";
 let checkPass = "";
@@ -47,6 +48,7 @@ function registrar(e){
             .then(resultArray => { 
                 registrarCuenta(resultArray[0],resultArray[1],resultArray[2],resultArray[3])})
             )
+            
             .catch(e => console.log('Error: ' + e));
            
             
@@ -181,10 +183,5 @@ const registrarCuenta = async (datosCuentas,datosCuentas1,datosCuentas2,datosCue
 //datosCli();
 //registrarCli();
 
-//datosCuenta();
-//datosUsuario();
-//maxIdCuenta();
-//maxIdCbu();
-//maxIdCLiente();
 let btnRegistrar = document.getElementById("btnContinue");
 btnRegistrar.addEventListener("click",registrar);
