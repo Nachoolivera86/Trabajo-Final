@@ -216,7 +216,7 @@ section {
     padding: 0;
   }
   .featured-services .icon-box-cards {
-    padding: 20px;
+    padding: 60px !important ;
     color: #010100;
     background: white;
     border-radius: 4px;
@@ -224,10 +224,11 @@ section {
     transition: 0.3s;
     height: 100%;
     text-align: center;
-    align-items: center;
+    width: 100% !important;
   }
   .featured-services .icon-cards {
     margin: 0 0 15px 0;
+    width: 100% !important;
   }
   .featured-services .icon-cards i {
     color: #010100;
@@ -263,7 +264,7 @@ section {
 }
 
 .importeDep {
-  display: none;
+   display: none;
 }
 
 .importeExt {
@@ -326,6 +327,61 @@ section {
   color: white;
   cursor: pointer;
 }
+
+
+.usuarios1{
+	/* margin-left: 50px !important; */
+  visibility: hidden ;
+	border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  
+}
+
+.usuarios1 th, td {
+  border: 1px solid black;
+  table-layout: fixed;
+}
+
+.cuentas1{
+  visibility: hidden;
+	border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.cuentas1 th, td {
+  border: 1px solid black;
+}
+
+
+.individuo1{
+  visibility: hidden;
+	border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.cliente1{
+  visibility: hidden;
+	border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.individuo1 th, td {
+  border: 1px solid black;
+}
+
+.cliente1 th, td {
+  border: 1px solid black;
+}
+
 
 /*--------------------------------------------------------------
 # Footer

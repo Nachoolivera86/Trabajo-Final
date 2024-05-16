@@ -97,6 +97,25 @@ const getCuentaById = (pool, id, callback) => {
   });
 };
 
+const getCuentaByCbu = (pool, cbu, callback) => {
+
+  let query = `SELECT id FROM cuentas WHERE cbu = ${cbu}`;
+ 
+  pool.getConnection((error, connection) => {
+    if (error) throw error;
+
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+
+      let response = result;
+      console.log(response)
+      callback(response)
+
+      connection.release();
+    });
+  });
+};
+
 const insertCuenta = (pool, body, callback) => {
   let query = `INSERT into cuentas VALUES (${body.id},"${body.nrocta}","${body.cbu}",${body.saldo},${body.clienteid})`
   console.log(query)
@@ -163,6 +182,7 @@ module.exports = {
   getMaxCbu,
   getMaxIdCli,
   getCuentaById,
+  getCuentaByCbu,
   insertCuenta,
   updateCuenta,
   deleteCuentaById

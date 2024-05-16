@@ -12,3 +12,4 @@ apiV1.use('/', userRouterIndiv, userRouterUser, userRouterCuenta, userRouterClie
 module.exports= {
     v1:apiV1
 }
+

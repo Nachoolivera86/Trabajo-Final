@@ -14,17 +14,22 @@ function login(){
 			validacion = true;
 			id = response[i].id;
 			usuario = response[i].user;
-			console.log(usuario)
+			console.log(usuario);
+			}else {
+				
+			}
+
 			if (usuario === 'Banquero') {
 				console.log("Soy el administrador")
 				validacion = false;
 				redireccionarAdministrador();
-			}
+			} 
 		}
-		}catch(error){
+		catch(error){
 			console.log(error);
 		}
-	}
+	} 
+	
 	user = "";
 	password ="";
 	console.log(validacion);
@@ -49,9 +54,9 @@ const llamada = async () => {
 
 function redireccionarAdministrador(){
 	console.log("llegue a menu Administrador");
-	window.location.replace("http://localhost:5501/Banco-FE/operacionesAdmin.html");
+	window.location.replace("http://localhost:5500/Trabajo-Final/Banco-FE/operacionesAdmin.html");
 
-	//window.location.replace("http://localhost:5501/Banco-FE/operaciones.html?Id="+id+"&User="+usuario);
+
 
 }
 
@@ -59,10 +64,8 @@ function redireccionarOperaciones(){
 	console.log("llegue a redireccionar");
 	
 
-	window.location.replace("http://localhost:5501/Banco-FE/operaciones.html?Id="+id+"&User="+usuario);
+	window.location.replace("http://localhost:5500/Trabajo-Final/Banco-FE/operaciones.html?Id="+id+"&User="+usuario);
 }
 
 llamada();
-
-
 
